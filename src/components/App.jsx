@@ -6,7 +6,7 @@ import FeedbackOptions  from "./FeedbackOptions/FeedbackOptions";
 
   class App extends React.Component {
     static propTypes = {
-        state: PropTypes.shape({
+      state: PropTypes.shape({
         good: PropTypes.number.isRequired,
         neutral: PropTypes.number.isRequired,
         bad: PropTypes.number.isRequired,
@@ -24,25 +24,25 @@ import FeedbackOptions  from "./FeedbackOptions/FeedbackOptions";
         good: this.state.good + 1,
         neutral: this.state.neutral + 1,
         bad: this.state.bad + 1,        
-      })
-      
+      })      
     };
     
     countTotalFeedback = () => {
       const { good, neutral, bad } = this.state;
-      
-      this.setState(prevState => {
-        return { total: prevState.value + good + neutral + bad };
-      });
+      const total = {good} + {neutral} + {bad}
+      return total
+      // this.setState(prevState => {
+      //   return { total: prevState.value + good + neutral + bad };
+      // });
     };
     
-    // countPositiveFeedbackPercentage = () => {
-    //   this.setState({
-    //     positiveFeedback: +Math.round((
-    //       this.handleFeedback.good /
-    //       this.countTotalFeedback.total) * 100)
-    //   });
-    // };
+    countPositiveFeedbackPercentage = () => {
+      this.setState({
+        positiveFeedback: +Math.round((
+          this.handleFeedback.good /
+          this.countTotalFeedback.total) * 100)
+      });
+    };
 
     render() {
       // const { good, neutral, bad } = this.state;
@@ -79,7 +79,7 @@ import FeedbackOptions  from "./FeedbackOptions/FeedbackOptions";
               // total = {total}
               // positivePercentage={positiveFeedback}
               total = {this.countTotalFeedback}
-              // positivePercentage={this.countPositiveFeedbackPercentage()}              
+              positivePercentage={this.countPositiveFeedbackPercentage}              
             />
           </section>
         </>

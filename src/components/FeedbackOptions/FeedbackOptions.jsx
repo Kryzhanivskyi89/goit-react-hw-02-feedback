@@ -3,28 +3,22 @@
 import React from "react"
 
 
-const FeedbackOptions = ({options, onLeaveFeedback}) =>{
+const FeedbackOptions = ({options, onLeaveFeedback}) => {
     console.log(options)
     return (
-            <div>
-                <h2>Please Leave feedback</h2>
-                                
+        <div>
+            <h2>Please Leave feedback</h2>                                
             <div className="feedback__controls">
-                <ul>
-                    <li>
-                        {options.map((option, index)  => (
-                            <button
-                                key={index}
-                                type="button"
-                                onClick={onLeaveFeedback}>
-                            {option}
-                            </button>))}
-                    </li>
-                </ul>                   
-            </div>
-                
+                {options.map( name => (
+                    <button
+                        key={name}
+                        type="button"
+                        onClick={() => onLeaveFeedback(name)}>
+                    {name}
+                    </button>))}              
+            </div>                
         </div>
-        )
+    )
 }
 
 export default FeedbackOptions;
