@@ -28,32 +28,23 @@ import FeedbackOptions  from "./FeedbackOptions/FeedbackOptions";
     };
     
     countTotalFeedback = () => {
-      const { good, neutral, bad } = this.state;
-      const total = {good} + {neutral} + {bad}
-      return total
-      // this.setState(prevState => {
-      //   return { total: prevState.value + good + neutral + bad };
-      // });
+      Object.values(this.state).reduce((prevValue, value) => {
+        return prevValue + value;
+      }, 0)
     };
     
     countPositiveFeedbackPercentage = () => {
-      this.setState({
-        positiveFeedback: +Math.round((
-          this.handleFeedback.good /
-          this.countTotalFeedback.total) * 100)
-      });
+      return +Math.round((
+          this.state.good /
+          this.countTotalFeedback) * 100)
     };
 
-    render() {
-      // const { good, neutral, bad } = this.state;
-      // const total = good + neutral + bad;
-      // const positiveFeedback = +Math.round((good / total) * 100);      
-    
+    render() {     
       return (
         <>
           <section >
             <FeedbackOptions
-              options={Object.keys(this.state)}
+              options={Object.keys (this.state)}
               onLeaveFeedback={this.handleFeedback}
             />
           </section>
@@ -75,11 +66,9 @@ import FeedbackOptions  from "./FeedbackOptions/FeedbackOptions";
             <Statistics 
               good = {this.state.good}
               neutral = {this.state.neutral}
-              bad = {this.state.bad}
-              // total = {total}
-              // positivePercentage={positiveFeedback}
-              total = {this.countTotalFeedback}
-              positivePercentage={this.countPositiveFeedbackPercentage}              
+              bad = {this.state.bad}             
+              total = {this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}              
             />
           </section>
         </>
