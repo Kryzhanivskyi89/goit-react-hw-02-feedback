@@ -1,0 +1,18 @@
+.list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 20px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.feedback {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    text-transform: uppercase;
+}

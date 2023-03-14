@@ -1,0 +1,8 @@
+.message {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #ff1100;
+    text-transform: uppercase;
+}
